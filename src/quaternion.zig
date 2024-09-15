@@ -379,7 +379,7 @@ pub fn Quaternion(comptime T: type) type {
             const dest_info = @typeInfo(dest_type);
 
             if (dest_info != .float) {
-                std.debug.panic("Error, dest type should be float.\n", .{});
+                @compileError("Error, dest type should be float.");
             }
 
             const w: dest_type = @floatCast(self.w);

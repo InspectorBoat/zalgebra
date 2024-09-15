@@ -3,7 +3,6 @@ const root = @import("main.zig");
 const math = std.math;
 const expectEqual = std.testing.expectEqual;
 const expect = std.testing.expect;
-const panic = std.debug.panic;
 
 pub const Vec2 = GenericVector(2, f32);
 pub const Vec2_f64 = GenericVector(2, f64);
@@ -256,7 +255,7 @@ pub fn GenericVector(comptime dimensions: comptime_int, comptime T: type) type {
             const dest_info = @typeInfo(dest_type);
 
             if (dest_info != .float and dest_info != .int) {
-                panic("Error, dest type should be integer or float.\n", .{});
+                @compileError("Error, dest type should be integer or float.");
             }
 
             var result: [dimensions]dest_type = undefined;

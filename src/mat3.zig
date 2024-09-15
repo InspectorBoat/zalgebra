@@ -288,7 +288,7 @@ pub fn Mat3x3(comptime T: type) type {
             const dest_info = @typeInfo(dest_type);
 
             if (dest_info != .float) {
-                std.debug.panic("Error, dest type should be float.\n", .{});
+                @compileError("Error, dest type should be float.");
             }
 
             var result: Mat3x3(dest_type) = undefined;

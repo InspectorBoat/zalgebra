@@ -479,7 +479,7 @@ pub fn Mat4x4(comptime T: type) type {
             const dest_info = @typeInfo(dest_type);
 
             if (dest_info != .float) {
-                std.debug.panic("Error, dest type should be float.\n", .{});
+                @compileError("Error, dest type should be float.");
             }
 
             var result: Mat4x4(dest_type) = undefined;
