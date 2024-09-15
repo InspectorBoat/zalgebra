@@ -19,7 +19,7 @@ pub const Mat3_f64 = Mat3x3(f64);
 /// A column-major 3x3 matrix
 /// Note: Column-major means accessing data like m.data[COLUMN][ROW].
 pub fn Mat3x3(comptime T: type) type {
-    if (@typeInfo(T) != .Float) {
+    if (@typeInfo(T) != .float) {
         @compileError("Mat3x3 not implemented for " ++ @typeName(T));
     }
 
@@ -287,7 +287,7 @@ pub fn Mat3x3(comptime T: type) type {
         pub fn cast(self: Self, comptime dest_type: type) Mat3x3(dest_type) {
             const dest_info = @typeInfo(dest_type);
 
-            if (dest_info != .Float) {
+            if (dest_info != .float) {
                 std.debug.panic("Error, dest type should be float.\n", .{});
             }
 
